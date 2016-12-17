@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    
+    <!-- ionic/mathjs -->
+    <script src="lib/mathjs/dist/math.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="sgcalculator" ng-controller="calculator">
+
+    <ion-pane>
+      <ion-content scroll="false" class="fill-height">
+      
+      <div class="card">
+			<div class="item item-divider item-calm"><span class="right" ng-bind="(string | display) || 0" id="string"></span></div>
+  			<div class="item item-text-wrap"><span class="right"><h1 ng-bind="(result| removeDecimals) || '-'"></h1></span></div>
+		</div>
+		
+		<div class="row">
+			<div class="col"><button class="button button-block button-positive button-large icon ion-trash-a" ng-click="reset()"></button></div>
+			<div class="col"><button class="button button-block button-calm button-large" ng-click="addNumber('(')">(</button></div>
+			<div class="col"><button class="button button-block button-calm button-large" ng-click="addNumber(')')">)</button></div>
+			<div class="col"><button class="button button-block button-positive button-large icon ion-backspace" ng-click="removeLast()"></button></div>
+		</div>
+      
+      <div class="row">
+			<div class="col"><button class="button button-block button-calm button-large" ng-click="addOperator('G')">GST</button></div>
+			<div class="col"><button class="button button-block button-calm" ng-click="addOperator('S')">Service</button></div>
+			<div class="col"><button class="button button-block button-calm" ng-click="addOperator('T')">GST +<br>Service</button></div>
+			<div class="col"><button class="button button-block button-calm button-large" ng-click="addOperator('÷')">÷</button></div>
+		</div>
+
+		<div class="row">
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('7')">7</button></div>
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('8')">8</button></div>
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('9')">9</button></div>
+			<div class="col"><button class="button button-block button-calm button-large" ng-click="addOperator('x')">x</button></div>
+		</div>
+
+		<div class="row">
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('4')">4</button></div>
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('5')">5</button></div>
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('6')">6</button></div>
+			<div class="col"><button class="button button-block button-calm button-large" ng-click="addNumber('-')">-</button></div>
+		</div>
+		
+		<div class="row">
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('1')">1</button></div>
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('2')">2</button></div>
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('3')">3</button></div>
+			<div class="col"><button class="button button-block button-calm button-large" ng-click="addOperator('+')">+</button></div>
+		</div>
+		
+		<div class="row">
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addNumber('.')">.</button></div>
+			<div class="col"><button class="button button-block button-stable button-large" ng-click="addOperator('0')">0</button></div>
+			<div class="col col-50"><button class="button button-block button-positive button-large" ng-click="equal()">=</button></div>
+		</div><br>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

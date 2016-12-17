@@ -1,0 +1,47 @@
+/* Empty. Add your own CSS if you like */
+
+/* These two classes are used to make the button
+ * grid stretch vertically to fill the available
+ * space
+ */
+.fill-height {
+    display: flex;
+    flex-direction: column;
+}
+.fill-height > div.row {
+    flex: 1;
+}
+ 
+ 
+/* These two classes center the buttons in their
+ * cells and right align the display text.
+ * The second selector has a higher specificity,
+ * so it overrides the centering.
+ */
+ion-content .col {
+    text-align: center;
+}
+ion-content div.display {
+    font-size: 2em;
+    text-align: right;
+}
+
+.button-block {
+  min-height: 100%;
+  height: 100%;
+}
+
+.button {
+	line-height: 100%;
+	border: 5px;
+	font-weight: bold;
+}
+
+.right {
+  float: right;
+  padding-bottom: 2px;
+}
+
+#string {
+	font-size: 150%;
+}
